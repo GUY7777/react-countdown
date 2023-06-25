@@ -1,24 +1,21 @@
-:root {
-  --main-color: rgb(246, 159, 39);
-  --background-color: black;
-}
 #timer-container {
   width: min-content;
   overflow: hidden;
-  background-color: var(--background-color);
-  border: 0.2rem solid var(--main-color);
+  background-color: black;
+  border: 0.2rem solid rgb(246, 159, 39);
   border-radius: 1.5rem;
 }
 #timer {
   font-size: 4rem;
+  font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 0.3rem;
-  color: var(--main-color);
+  color: rgb(246, 159, 39);
   padding: 3rem;
   text-align: center;
   mix-blend-mode: difference;
 }
 #animated-background {
-  background-color: var(--main-color);
+  background-color: rgb(246, 159, 39);
 }
 
 @keyframes loading {
