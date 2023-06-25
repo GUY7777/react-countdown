@@ -23,7 +23,7 @@ export default function CountdownTimer({ targetTime }: props) {
   }, [timeLeftSec]);
 
   const displyTimer = (): string => {
-    const hours = ("0" + Math.floor((timeLeftSec / 60 / 60) % 24)).slice(-2);
+    const hours = Math.floor(timeLeftSec / 60 / 60);
     const minutes = ("0" + Math.floor((timeLeftSec / 60) % 60)).slice(-2);
     const seconds = ("0" + Math.floor(timeLeftSec % 60)).slice(-2);
     return hours + ":" + minutes + ":" + seconds;

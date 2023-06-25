@@ -6,7 +6,7 @@ function App() {
     <>
       <div>
         טיימר :
-        <CountdownTimer targetTime={new Date("06/25/2023 17:40")} />
+        <CountdownTimer targetTime={new Date("06/26/2023 03:52")} />
       </div>
     </>
   );
