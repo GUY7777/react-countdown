@@ -1,0 +1,31 @@
+:root {
+  --main-color: rgb(246, 159, 39);
+  --background-color: black;
+}
+#timer-container {
+  width: min-content;
+  overflow: hidden;
+  background-color: var(--background-color);
+  border: 0.2rem solid var(--main-color);
+  border-radius: 1.5rem;
+}
+#timer {
+  font-size: 4rem;
+  letter-spacing: 0.3rem;
+  color: var(--main-color);
+  padding: 3rem;
+  text-align: center;
+  mix-blend-mode: difference;
+}
+#animated-background {
+  background-color: var(--main-color);
+}
+
+@keyframes loading {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
