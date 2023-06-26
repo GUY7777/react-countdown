@@ -1,21 +1,29 @@
 #timer-container {
-  width: min-content;
+  width: fit-content;
   overflow: hidden;
-  background-color: black;
-  border: 0.2rem solid rgb(246, 159, 39);
-  border-radius: 1.5rem;
 }
-#timer {
-  font-size: 4rem;
+
+.timer-text {
   font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-variant-numeric: tabular-nums;
   letter-spacing: 0.3rem;
-  color: rgb(246, 159, 39);
-  padding: 3rem;
+  padding: 1.4rem;
   text-align: center;
-  mix-blend-mode: difference;
 }
+
+#backTimerText {
+  position: absolute;
+  z-index: 1;
+}
+
+#frontTimerText {
+  position: relative;
+  z-index: 2;
+}
+
 #animated-background {
-  background-color: rgb(246, 159, 39);
+  overflow: hidden;
 }
 
 @keyframes loading {
