@@ -1,0 +1,32 @@
+#toggle-mode-container {
+  display: flex;
+  width: 6.2em;
+  flex-direction: row-reverse;
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  border-radius: 2em;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#toggle-mode-container:hover {
+  cursor: pointer;
+}
+
+#mode-lable {
+  margin-right: 0.8em;
+  margin-left: 0.8em;
+}
+
+#mode-img {
+  background-color: rgb(19, 107, 179);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 2em;
+  transform: scale(1.3);
+  border: 0.3em solid #6f67c959;
+}

@@ -1,43 +1,42 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./CountdownTimer.css";
 
-type borderStyleOptions = "solid" | "double" | "dotted" | "dashed";
+const DEFUALT = {
+  FONT_SIZE: "4rem",
+  MAIN_COLOR: "yellow",
+  SECONDARY_COLOR: "black",
+  BORDER_THICKNESS: "1rem",
+};
 
 interface props {
   targetTime: Date;
-  timerSize?: string;
-  textColor?: string;
-  backgroundColor?: string;
-  borderRadius?: string;
-  borderThickness?: string;
-  borderStyle?: borderStyleOptions;
+  mainColor?: string;
+  secondaryColor?: string;
+  fontSize?: string;
+  containerStyle?: React.CSSProperties;
 }
 
 export default function CountdownTimer({
   targetTime,
-  timerSize = "4rem",
-  textColor = "rgb(246, 159, 39)",
-  backgroundColor = "black",
-  borderRadius = "0",
-  borderThickness = "0.2rem",
-  borderStyle = "solid",
+  fontSize = DEFUALT.FONT_SIZE,
+  mainColor = DEFUALT.MAIN_COLOR,
+  secondaryColor = DEFUALT.SECONDARY_COLOR,
+  containerStyle,
 }: props) {
   const deltaTimeSec = useRef<number>(
-    (targetTime.getTime() - Date.now()) / 1000
+    Math.max(Math.min((targetTime.getTime() - Date.now()) / 1000, 359999), 0)
   );
+
   const [timeLeftSec, setTimeLeftSec] = useState<number>(deltaTimeSec.current);
 
   useEffect(() => {
-    if (timeLeftSec <= 0) {
-      setTimeLeftSec(0);
-      return;
-    }
-
-    const interval = setInterval(() => {
-      setTimeLeftSec(timeLeftSec - 1);
+    const timer = setTimeout(() => {
+      if (timeLeftSec - 1 >= 0) {
+        setTimeLeftSec(timeLeftSec - 1);
+      }
     }, 1000);
 
-    return () => clearInterval(interval);
+    return () => clearTimeout(timer);
   }, [timeLeftSec]);
 
   const currentTime = (): string => {
@@ -47,30 +46,32 @@ export default function CountdownTimer({
     return hours + ":" + minutes + ":" + seconds;
   };
 
-  const styleTimerContainer = {
-    backgroundColor: backgroundColor,
-    border: `${borderThickness} ${borderStyle} ${textColor}`,
-    borderRadius: borderRadius,
+  const defaultContainerStyle = {
+    backgroundColor: secondaryColor,
+    border: `${DEFUALT.BORDER_THICKNESS} solid ${mainColor}`,
   };
   const styleAnimatedBackgound = {
-    backgroundColor: textColor,
+    backgroundColor: mainColor,
     animation: `loading ${deltaTimeSec.current}s linear`,
   };
 
   return (
-    <div id="timer-container" style={styleTimerContainer}>
+    <div
+      id="timer-container"
+      style={Object.assign(defaultContainerStyle, containerStyle)}
+    >
+      <div
+        id="backTimerText"
+        className="timer-text"
+        style={{ fontSize: fontSize, color: mainColor }}
+      >
+        {currentTime()}
+      </div>
       <div id="animated-background" style={styleAnimatedBackgound}>
-        <div
-          id="backTimerText"
-          className="timer-text"
-          style={{ fontSize: timerSize, color: textColor }}
-        >
-          {currentTime()}
-        </div>
         <div
           id="frontTimerText"
           className="timer-text"
-          style={{ fontSize: timerSize, color: backgroundColor }}
+          style={{ fontSize: fontSize, color: secondaryColor }}
         >
           {currentTime()}
         </div>

@@ -1,6 +1,7 @@
 #timer-container {
   width: fit-content;
   overflow: hidden;
+  position: relative;
 }
 
 .timer-text {
@@ -9,20 +10,22 @@
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.3rem;
   padding: 1.4rem;
-  text-align: center;
 }
 
 #backTimerText {
   position: absolute;
+  left: 0;
+  right: 0;
   z-index: 1;
 }
 
 #frontTimerText {
   position: relative;
+  width: 100%;
   z-index: 2;
 }
-
 #animated-background {
+  position: relative;
   overflow: hidden;
 }
 

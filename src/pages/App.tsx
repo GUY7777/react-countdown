@@ -1,5 +1,6 @@
 import "./App.css";
 import CountdownTimer from "../components/CountdownTimer";
+import ToggleDarkMode from "../components/ToggleDarkMode";
 
 function App() {
   return (
@@ -7,13 +8,12 @@ function App() {
       <div>
         טיימר :
         <CountdownTimer
-          targetTime={new Date("06/26/2023 20:14")}
-          borderRadius="1.5rem"
-          borderStyle="solid"
-          borderThickness="1rem"
-          backgroundColor="aqua"
-          textColor="black"
+          targetTime={new Date("04/22/2024 00:48")}
+          containerStyle={{ borderRadius: "20px" }}
+          mainColor="orange"
+          containerStyle={{ width: "500px", textAlign: "center" }}
         />
+        {/* <ToggleDarkMode /> */}
       </div>
     </>
   );
